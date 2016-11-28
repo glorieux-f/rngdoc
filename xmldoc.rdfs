@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Xrem, generated labels
+
+Copyright © 2012-2013 Algone
+license : APACHE 2.0 http://www.apache.org/licenses/LICENSE-2.0
+<frederic.glorieux@algone.net>
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xf="http://www.w3.org/2002/xforms"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xml:lang="en"
+>
+  <rdf:Description>
+    <rdfs:label>english label</rdfs:label>
+    <rdfs:label xml:lang="fr">Titre court en français</rdfs:label>
+  </rdf:Description>
+  <rdf:Property xml:id="attribute">
+    <rdfs:label>Attribute</rdfs:label>
+    <rdfs:label xml:lang="fr">Attribut</rdfs:label>
+  </rdf:Property>
+  <rdf:Property xml:id="attributes">
+    <rdfs:label>Attributes</rdfs:label>
+    <rdfs:label xml:lang="fr">Attributs</rdfs:label>
+  </rdf:Property>
+  <rdf:Property xml:id="content">
+    <rdfs:label>Content</rdfs:label>
+    <rdfs:label xml:lang="fr">Contenu</rdfs:label>
+  </rdf:Property>
+  <rdf:Property xml:id="children">
+    <rdfs:label>Children</rdfs:label>
+    <rdfs:label xml:lang="fr">Enfants</rdfs:label>
+  </rdf:Property>
+  <rdf:Property xml:id="element">
+    <rdfs:label>element</rdfs:label>
+    <rdfs:label xml:lang="fr">élément</rdfs:label>
+  </rdf:Property>
+  <rdf:Property xml:id="elements">
+    <rdfs:label>Elements</rdfs:label>
+    <rdfs:label xml:lang="fr">Éléments</rdfs:label>
+  </rdf:Property>
+  <rdf:Property xml:id="example">
+    <rdfs:label>XML example</rdfs:label>
+    <rdfs:label xml:lang="fr">Exemple XML</rdfs:label>
+  </rdf:Property>
+  <rdf:Property xml:id="macros">
+    <rdfs:label>Macros</rdfs:label>
+    <rdfs:label xml:lang="fr">Macros</rdfs:label>
+  </rdf:Property>
+  <rdf:Property xml:id="model">
+    <rdfs:label>Model</rdfs:label>
+    <rdfs:label xml:lang="fr">Modèle</rdfs:label>
+  </rdf:Property>
+  <rdf:Property xml:id="navigation">
+    <rdfs:label>Navigation</rdfs:label>
+    <rdfs:label xml:lang="fr">Navigation</rdfs:label>
+  </rdf:Property>
+  <rdf:Property xml:id="nodef">
+    <rdfs:label>No definition for: </rdfs:label>
+    <rdfs:label xml:lang="fr">Définition absente : </rdfs:label>
+  </rdf:Property>
+  <rdf:Property xml:id="otherExamples">
+    <rdfs:label>Other code examples in: </rdfs:label>
+    <rdfs:label xml:lang="fr">D'autres exemples de code dans : </rdfs:label>
+  </rdf:Property>
+  <rdf:Property xml:id="powered">
+    <rdfs:label>Produced by <a href="http://algone.net/" target="_new"><img src="http://algone.net/algone-16.png" alt="Algone"/> Algone</a></rdfs:label>
+    <rdfs:label xml:lang="fr">Produit par <a href="http://algone.net/" target="_new"><img src="http://algone.net/algone-16.png" alt="Algone"/> Algone</a></rdfs:label>
+  </rdf:Property>
+  <rdf:Property xml:id="start">
+    <rdfs:label>Root(s)</rdfs:label>
+    <rdfs:label xml:lang="fr">Racine(s)</rdfs:label>
+  </rdf:Property>
+  <rdf:Property xml:id="seealso">
+    <rdfs:label>See also</rdfs:label>
+    <rdfs:label xml:lang="fr">Voir-aussi</rdfs:label>
+  </rdf:Property>
+  <rdf:Property xml:id="unused">
+    <rdfs:label>Unused</rdfs:label>
+    <rdfs:label xml:lang="fr">Inutilisé</rdfs:label>
+  </rdf:Property>
+  <rdf:Property xml:id="usage">
+    <rdfs:label>Parents</rdfs:label>
+    <rdfs:label xml:lang="fr">Parents</rdfs:label>
+  </rdf:Property>
+  <rdf:Property xml:id="value">
+    <rdfs:label>Value</rdfs:label>
+    <rdfs:label xml:lang="fr">Valeur</rdfs:label>
+  </rdf:Property>
+</rdf:RDF>
