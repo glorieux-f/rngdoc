@@ -194,9 +194,9 @@ some delicate tests tuned on different major schemas style.
   <xsl:template name="a">
     <a>
       <xsl:call-template name="href"/>
-      <xsl:call-template name="title"/>
       <!-- not qname
       <xsl:value-of select="@name|rng:name"/>
+      <xsl:call-template name="title"/>
       -->
       <xsl:call-template name="qname"/>
     </a>
@@ -214,6 +214,25 @@ some delicate tests tuned on different major schemas style.
     <article id="article" class="{local-name()}">
       <xsl:apply-templates/>
     </article>
+    <script><xsl:text disable-output-escaping="yes">
+var els = document.getElementsByTagName('a');
+for(var i = 0, len = els.length; i &lt; len; i++) {
+  if (els[i].title) continue;
+  els[i].onmouseover = function () {
+    var t0 = performance.now();
+    if (this.title) return true;
+    if (!this.hash) return true;
+    var id = this.hash.substring(1);
+    if (!id) return true;
+    var div = document.getElementById(id);
+    if (!div) return true;
+    var header = div.getElementsByTagName('header');
+    if (header.length == 0) return true;
+    this.title = header[0].textContent;
+    return true;
+  }
+}      
+    </xsl:text></script>
   </xsl:template>
   <!-- Sometimes useful for override -->
   <xsl:template name="document">
@@ -305,7 +324,6 @@ some delicate tests tuned on different major schemas style.
   <xsl:template match="rng:element" mode="toc">
     <a>
       <xsl:call-template name="href"/>
-      <xsl:call-template name="title"/>
       <xsl:text>&lt;</xsl:text>
       <xsl:call-template name="qname"/>
       <xsl:text>&gt;</xsl:text>
@@ -655,14 +673,10 @@ some delicate tests tuned on different major schemas style.
               </th>
               <td>
                 <table class="attributes">
-                  <xsl:comment> </xsl:comment>
                   <xsl:variable name="element" select="."/>
                   <xsl:for-each select="key('atts', 1)">
                     <xsl:sort select="@name|rng:name"/>
                     <xsl:variable name="id" select="generate-id()"/>
-                    <xsl:comment>
-                      <xsl:value-of select="@name|rng:name"/>
-                    </xsl:comment>
                     <xsl:variable name="card">
                       <xsl:choose>
                         <xsl:when test="contains($atts, concat(' ',$id,' '))">REQUIRED</xsl:when>
@@ -677,7 +691,6 @@ some delicate tests tuned on different major schemas style.
                               <xsl:text>@</xsl:text>
                               <a class="required">
                                 <xsl:call-template name="href"/>
-                                <xsl:call-template name="title"/>
                                 <!-- maybe needed for <anyName> -->
                                 <xsl:call-template name="qname"/>
                               </a>
@@ -689,7 +702,6 @@ some delicate tests tuned on different major schemas style.
                               <xsl:text>@</xsl:text>
                               <a>
                                 <xsl:call-template name="href"/>
-                                <xsl:call-template name="title"/>
                                 <xsl:value-of select="@name|rng:name"/>
                               </a>
                             </td>
@@ -1410,7 +1422,7 @@ Idea is to collect the ids
     <xsl:variable name="title">
       <xsl:call-template name="title">
         <xsl:with-param name="mode">html</xsl:with-param>
-      </xsl:call-template>   
+      </xsl:call-template>
     </xsl:variable>
     <xsl:choose>
       <!-- Mode=value is set by an attribute, means we are inside -->
@@ -1835,6 +1847,7 @@ Idea is to collect the ids
       <xsl:call-template name="href"/>
       <!-- infinite loop possible if rng:element[@name='A']/a:documentation/a:el[text()='B'] and 
       rng:element[@name='B']/a:documentation/a:el[text()='A'] -->
+      <!--
       <xsl:variable name="title">
         <xsl:for-each select="key('element', substring-before(concat(normalize-space(.),' '), ' '))[1]">
           <xsl:value-of select="a:documentation"/>
@@ -1845,6 +1858,7 @@ Idea is to collect the ids
           <xsl:value-of select="$title"/>
         </xsl:attribute>
       </xsl:if>
+      -->
       <xsl:value-of select="."/>
     </a>
     <xsl:text>&gt;</xsl:text>
