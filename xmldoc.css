@@ -36,7 +36,7 @@ body.xmldoc #nav, body.xmldoc #header {font-family:Arial, sans-serif;font-size:1
 body.xmldoc a {color:#226; text-decoration:none;}
 body.xmldoc a:hover { text-decoration:underline;}
 body.xmldoc fieldset { margin:1em 0 1ex 0; padding:0 1ex 0 1ex; border:1px dotted #363; -moz-border-radius:1ex; -webkit-border-radius:1ex; white-space:normal;}
-body.xmldoc p {text-align:justify;text-indent:2em;margin-top:0;margin-bottom:0;}
+body.xmldoc p {}
 body.xmldoc h1 {text-align:center; line-height:105%;}
 body.xmldoc h3 {border-bottom:1px solid #336699; padding-left: 1em; margin-top:2em; margin-bottom:1em;}
 body.xmldoc table {font-size:inherit;}

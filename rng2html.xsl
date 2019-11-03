@@ -1836,8 +1836,23 @@ Idea is to collect the ids
   </xsl:template>
   <xsl:template match="*" mode="xml_name">
     <a class="el">
-      <xsl:call-template name="href"/>
-      <xsl:call-template name="title"/>
+      <xsl:variable name="name" select="concat(local-name(), '-', @type)"/>
+      <xsl:variable name="define" select="key('define', $name)/rng:element[1]"/>
+      <xsl:choose>
+        <xsl:when test="$define">
+          <xsl:for-each select="$define[1]">
+            <xsl:attribute name="href">
+              <xsl:text>#</xsl:text>
+              <xsl:call-template name="id"/>
+            </xsl:attribute>
+            <xsl:call-template name="title"/>
+          </xsl:for-each>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:call-template name="href"/>
+          <xsl:call-template name="title"/>
+        </xsl:otherwise>
+      </xsl:choose>
       <xsl:value-of select="name()"/>
     </a>
   </xsl:template>
