@@ -1,4 +1,6 @@
-<!-- /* keep file XML valid, maybe included by xsl:document() */
+<!--
+
+/* keep file XML valid, maybe included by xsl:document() */
 /*
 
 Copyright © 2004-2017 Frédéric Glorieux
@@ -20,155 +22,662 @@ limitations under the License.
 /*
 Classes for documented XML files by xmldoc transformations
 */
+section, nav, article, aside, hgroup, header, footer, figure, figcaption {
+  display: block;
+}
 
-section, nav, article, aside, hgroup, header, footer, figure, figcaption { display:block;}
-* {-moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
+* {
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
 /** Fonts */
+body.xmldoc, table.facs caption {
+  background: #FFFFFF;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  margin: 0;
+}
 
-body.xmldoc, table.facs caption { font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;font-size:13px;margin:0;}
-body.item {padding:2em;}
-body.nav{padding:0;margin:1ex;}
-body.xmldoc #nav, body.xmldoc #header {font-family:Arial, sans-serif;font-size:13px;}
+body.item {
+  padding: 2em;
+}
+
+body.nav {
+  padding: 0;
+  margin: 1ex;
+}
+
+body.xmldoc #nav, body.xmldoc #header {
+  font-family: Arial, sans-serif;
+  font-size: smaller;
+}
 
 /** simple HTML, with body class protection if css imported (in html tagname order) */
+body.xmldoc a {
+  color: #226;
+  text-decoration: none;
+}
 
-body.xmldoc a {color:#226; text-decoration:none;}
-body.xmldoc a:hover { text-decoration:underline;}
-body.xmldoc fieldset { margin:1em 0 1ex 0; padding:0 1ex 0 1ex; border:1px dotted #363; -moz-border-radius:1ex; -webkit-border-radius:1ex; white-space:normal;}
+body.xmldoc a:hover {
+  text-decoration: underline;
+}
+
+body.xmldoc fieldset {
+  margin: 1em 0 1ex 0;
+  padding: 0 1ex 0 1ex;
+  border: 1px dotted #363;
+  -moz-border-radius: 1ex;
+  -webkit-border-radius: 1ex;
+  white-space: normal;
+}
+
 body.xmldoc p {}
-body.xmldoc h1 {text-align:center; line-height:105%;}
-body.xmldoc h3 {border-bottom:1px solid #336699; padding-left: 1em; margin-top:2em; margin-bottom:1em;}
-body.xmldoc table {font-size:inherit;}
+
+body.xmldoc h1 {
+  text-align: center;
+  line-height: 105%;
+}
+
+body.xmldoc h3 {
+  border-bottom: 1px solid #336699;
+  padding-left: 1em;
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+body.xmldoc table {
+  font-size: inherit;
+}
 
 /* Global layout */
-html{height:100%;}
-body.xmldoc{position:relative;}
-body.xmldoc #article { padding:0; margin:3ex 5em 5em 30%; min-height:500px;}
-body.xmldoc #header {position:absolute;background:#DADADA;top:0;left:0;right:0;padding:0 1ex;}
-body.xmldoc #footer {position:absolute;background:#DADADA;bottom:-1px;left:0;right:0;padding:0 1ex;} /* need container with position :relative */
-body.xmldoc #footer img {margin:-4px;}
-body.xmldoc #nav { top:0; position:fixed; padding:0 3px 2em 11px; height:100%; overflow:auto; width:27%; color:black; margin:0 0 0 0; border-right:solid 1px #b3b3b3; }
-body.xmldoc #nav header, body.nav header { padding:1ex 0;font-style:normal; font-weight:bold;}
-.index div {line-height:100%;margin:0.8ex 0;}
+html {
+  height: 100%;
+}
+
+body.xmldoc {
+  position: relative;
+}
+
+body.xmldoc #article {
+  padding: 0;
+  margin: 3ex 5em 5em 30%;
+  min-height: 500px;
+}
+
+body.xmldoc #header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0 1ex;
+}
+
+body.xmldoc #footer {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  padding: 0 1ex;
+}
+
+/* need container with position :relative */
+body.xmldoc #footer img {
+  margin: -4px;
+}
+
+body.xmldoc #nav {
+  top: 0;
+  position: fixed;
+  padding: 0 3px 2em 11px;
+  height: 100%;
+  overflow: auto;
+  width: 27%;
+  color: black;
+  margin: 0 0 0 0;
+  border-right: solid 1px #b3b3b3;
+}
+
+body.xmldoc #nav header, body.nav header {
+  padding: 1ex 0;
+  font-style: normal;
+  font-weight: bold;
+}
+
+.index div {
+  line-height: 100%;
+  margin: 0.8ex 0;
+}
 
 /** generic classes */
-.pre {white-space: pre-wrap;}
-.tree ul { padding:0; margin:0; padding-left:1em; }
-body.xmldoc ul.tree ul { padding-left:1ex; margin-left:1em;}
+.pre {
+  white-space: pre-wrap;
+}
+
+.tree ul {
+  padding: 0;
+  margin: 0;
+  padding-left: 1em;
+}
+
+body.xmldoc ul.tree ul {
+  padding-left: 1ex;
+  margin-left: 1em;
+}
 
 /* xml2html.xsl, documented XML source */
+.example {
+  background-color: #FFFFFF;
+  background-image: -webkit-gradient(linear, left top, right top, from(#FFFFFF), to(#F8F8F8));
+  background-image: -webkit-linear-gradient(left, #FFFFFF, #F8F8F8);
+  background-image: -moz-linear-gradient(left, #FFFFFF, #F8F8F8);
+  background-image: -ms-linear-gradient(left, #FFFFFF, #F8F8F8);
+  background-image: -o-linear-gradient(left, #FFFFFF, #F8F8F8);
+  background-image: linear-gradient(left, #FFFFFF, #F8F8F8);
+  border-left: 1px dotted #808080;
+  padding: 1ex 1em;
+  margin: 0;
+}
 
-.example { background-color: #FFFFFF; background-image: -webkit-gradient(linear, left top, right top,from(#FFFFFF),to(#F8F8F8)); background-image: -webkit-linear-gradient(left, #FFFFFF, #F8F8F8); background-image: -moz-linear-gradient(left, #FFFFFF, #F8F8F8); background-image: -ms-linear-gradient(left, #FFFFFF, #F8F8F8); background-image:      -o-linear-gradient(left, #FFFFFF, #F8F8F8); background-image: linear-gradient(left, #FFFFFF, #F8F8F8); border-left:1px dotted #808080; padding:1ex 1em; margin:0;}
-.xml { line-height:105%; text-align:left;}
-.xml  a { text-decoration:none; border-bottom:none; border:none; padding:0;}
-.xml a.val { color:#0000FF; }
-.xml a.val:hover { text-decoration:underline; border:none; }
-a.xsl  { color:#669966; font-weight:100;}
-a:hover.xsl, a:hover.rdf { background:#0000FF; color:white; }
-a.html, a.dc { color:#FF0000; font-weight:bold;}
-a:hover.html, a:hover.dc, a:hover.template { background:red; color:white; }
-a.template { font-family: Verdana, arial, sans-serif; font-weight:bold; }
-.xml .el, .xml  a.el { font-weight:bold; font-family: "Lucida Console", Courier, "MS Courier New", monospace; text-decoration:none; color:#040; border:none; }
-.xml a:hover.el, .xml a:hover.att { background:#8080FF; color:#FFFFFF; }
-.xml .att { font-family:Arial, sans-serif; font-weight:100; }
-.xml a.att { font-family:Arial, sans-serif; color:#444;}
-.xml .open, .xml .close, .xml .tag { margin:0; font-family:monospace, sans-serif; color:#383; }
-.xml .fold {color:#666666; }
-.xml .pi { color:#008000; font-weight: bold; }
-.xml .val, .xml .cdata { font-weight:normal; margin:0; padding:0; }
-.xml .comment, .xml .comment code { font-size:12px; line-height:125%; background:#FFE; color:#666; }
-.xml  pre.comment { margin:0; padding:0 1em;}
-.xml .comment { font-family:monospace; color:#000; }
-fieldset.comment pre {color:#008;}
-div.comment {white-space: normal;}
-dd.code { margin:0 !important; padding:0 !important; padding-left:1em !important; border-left: 1px dotted #808080;}
-.pre .text { background:#EEF; font-family:serif; color:#000;}
-.xml span.text, .xml .val, .xml .cdata { color:#444;}
-.xml .cdata { color:red}
-.xml .ns { color:#000080; font-weight:100;}
-dt { font-weight:bold;}
-dl.xml { margin:0; padding:0;}
-dl.xml dt { font-weight:normal; }
-details.source { margin-left:1em; float:right; max-width:60%; background:#FFFFFF;}
-details.source summary { float:right; display:inline; text-align:right;}
-details > * { display:none;}
-details.minus > * { display:block;}
+.xml {
+  line-height: 105%;
+  text-align: left;
+}
+
+.xml a {
+  text-decoration: none;
+  border-bottom: none;
+  border: none;
+  padding: 0;
+}
+
+.xml a.val {
+  color: #0000FF;
+}
+
+.xml a.val:hover {
+  text-decoration: underline;
+  border: none;
+}
+
+a.xsl {
+  color: #669966;
+  font-weight: 100;
+}
+
+a:hover.xsl, a:hover.rdf {
+  background: #0000FF;
+  color: white;
+}
+
+a.html, a.dc {
+  color: #FF0000;
+  font-weight: bold;
+}
+
+a:hover.html, a:hover.dc, a:hover.template {
+  background: red;
+  color: white;
+}
+
+a.template {
+  font-family: Verdana, arial, sans-serif;
+  font-weight: bold;
+}
+
+.xml .el, .xml a.el {
+  font-weight: bold;
+  font-family: "Lucida Console", Courier, "MS Courier New", monospace;
+  text-decoration: none;
+  color: #040;
+  border: none;
+}
+
+.xml a:hover.el, .xml a:hover.att {
+  background: #8080FF;
+  color: #FFFFFF;
+}
+
+.xml .att {
+  font-family: Arial, sans-serif;
+  font-weight: 100;
+}
+
+.xml a.att {
+  font-family: Arial, sans-serif;
+  color: #444;
+}
+
+.xml .open, .xml .close, .xml .tag {
+  margin: 0;
+  font-family: monospace, sans-serif;
+  color: #383;
+}
+
+.xml .fold {
+  color: #666666;
+}
+
+.xml .pi {
+  color: #008000;
+  font-weight: bold;
+}
+
+.xml .val, .xml .cdata {
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.xmlcomment, .xmlcomment code {
+  font-size: 12px;
+  line-height: 125%;
+  background: #FFE;
+  color: #666;
+}
+
+pre.xmlcomment {
+  margin: 0;
+  padding: 0 1em;
+}
+
+.xmlcomment {
+  font-family: monospace;
+  color: #000;
+}
+
+fieldset.xmlcomment pre {
+  color: #008;
+}
+
+div.xmlcomment {
+  white-space: normal;
+}
+
+dd.xmlcode {
+  margin: 0 !important;
+  padding: 0 !important;
+  padding-left: 1em !important;
+  border-left: 1px dotted #808080;
+}
+
+.pre .xmltext {
+  background: #EEF;
+  font-family: serif;
+  color: #000;
+}
+
+.xml, .xml .val, .xml .cdata {
+  color: #444;
+}
+
+.xml .cdata {
+  color: red
+}
+
+.xml .ns {
+  color: #000080;
+  font-weight: 100;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dl.xml {
+  margin: 0;
+  padding: 0;
+}
+
+dl.xml dt {
+  font-weight: normal;
+}
+
+details.source {
+  margin-left: 1em;
+  float: right;
+  max-width: 60%;
+  background: #FFFFFF;
+}
+
+details.source summary {
+  float: right;
+  display: inline;
+  text-align: right;
+}
+
+details>* {
+  display: none;
+}
+
+details.minus>* {
+  display: block;
+}
 
 /** Relax-NG */
+section.attribute {
+  margin-top: 1em;
+}
 
-section.attribute { margin-top:1em; }
-section.define, section.element { margin-top:2em; }
-section.rng { margin:2em 0 0 0;}
-section.rng section.rng header { padding-left:2em;}
-section.rng section.rng section.rng header { padding-left:4em;}
-section.rng section.rng section.rng section.rng header { padding-left:6em;}
-header.rng { font-size:110%; margin-bottom:1ex; padding:0; border:none;}
-header.rng a { color:#77A; font-weight:bold;}
-header.attribute { color:#666;}
+section.define, section.element {
+  margin-top: 2em;
+}
+
+section.rng {
+  margin: 2em 0 0 0;
+}
+
+section.rng section.rng header {
+  padding-left: 2em;
+}
+
+section.rng section.rng section.rng header {
+  padding-left: 4em;
+}
+
+section.rng section.rng section.rng section.rng header {
+  padding-left: 6em;
+}
+
+header.rng {
+  font-size: 110%;
+  margin-bottom: 1ex;
+  padding: 0;
+  border: none;
+}
+
+header.rng a {
+  color: #77A;
+  font-weight: bold;
+}
+
+header.attribute {
+  color: #666;
+}
+
 /* entry in a table */
-table.grammar { background-color:#F8F8F8; background-image: -webkit-gradient(linear, left top, right top,from(#FFFFFF),to(#F8F8F8)); background-image: -webkit-linear-gradient(left, #FFFFFF, #F8F8F8); background-image: -moz-linear-gradient(left, #FFFFFF, #F8F8F8); background-image: -ms-linear-gradient(left, #FFFFFF, #F8F8F8); background-image: -o-linear-gradient(left, #FFFFFF, #F8F8F8); background-image: linear-gradient(left, #FFFFFF, #F8F8F8); border-collapse:collapse; width:100%; line-height:105%; border-left:1px dotted #808080;margin-bottom:1em;}
-table.grammar tt, table.grammar em {color:#000;}
-table.grammar td { padding:0.5ex 1ex; line-height:1.1em; border-bottom:1px dotted #999999;vertical-align:top;}
-table.grammar th { font-family:Helvetica, Arial, "DejaVu Sans Light ", sans-serif; font-size:12px; width:10ex; vertical-align:top; padding:0.5ex 1ex; background:#DADADA; border-bottom:1px solid #FFFFFF; font-weight:normal;}
-table.attributes td {padding:0 0.2ex;line-height:100%;border:none;}
-table.attributes td.name {text-align:right;}
-.xmldoc a.required {color:#000;font-weight:bold;}
-.grammar a { font-family:Helvetica, Arial, "DejaVu Sans Light ", sans-serif; color:#315BA7; border:none;}
-.grammar a.define, .grammar a.ref { color:#000; font-style:italic; font-family:serif;}
-td.children div, td.usage div {display:inline}
-p.cf {margin-top:0;}
+table.grammar {
+  background-color: #F8F8F8;
+  background-image: -webkit-gradient(linear, left top, right top, from(#FFFFFF), to(#F8F8F8));
+  background-image: -webkit-linear-gradient(left, #FFFFFF, #F8F8F8);
+  background-image: -moz-linear-gradient(left, #FFFFFF, #F8F8F8);
+  background-image: -ms-linear-gradient(left, #FFFFFF, #F8F8F8);
+  background-image: -o-linear-gradient(left, #FFFFFF, #F8F8F8);
+  background-image: linear-gradient(left, #FFFFFF, #F8F8F8);
+  border-collapse: collapse;
+  width: 100%;
+  line-height: 105%;
+  border-left: 1px dotted #808080;
+  margin-bottom: 1em;
+}
+
+table.grammar tt, table.grammar em {
+  color: #000;
+}
+
+table.grammar td {
+  padding: 0.5ex 1ex;
+  line-height: 1.1em;
+  border-bottom: 1px dotted #999999;
+  vertical-align: top;
+}
+
+table.grammar th {
+  font-family: Helvetica, Arial, "DejaVu Sans Light ", sans-serif;
+  font-size: 12px;
+  width: 10ex;
+  vertical-align: top;
+  padding: 0.5ex 1ex;
+  background: #DADADA;
+  border-bottom: 1px solid #FFFFFF;
+  font-weight: normal;
+}
+
+table.attributes td {
+  padding: 0 0.2ex;
+  line-height: 100%;
+  border: none;
+}
+
+table.attributes td.name {
+  text-align: right;
+}
+
+.xmldoc a.required {
+  color: #000;
+  font-weight: bold;
+}
+
+.grammar a {
+  font-family: Helvetica, Arial, "DejaVu Sans Light ", sans-serif;
+  color: #315BA7;
+  border: none;
+}
+
+.grammar a.define, .grammar a.ref {
+  color: #000;
+  font-style: italic;
+  font-family: serif;
+}
+
+td.children div, td.usage div {
+  display: inline
+}
+
+p.cf {
+  margin-top: 0;
+}
+
 /* att values */
-ul.values {  margin-top:0; margin-bottom:0; padding-top:0; margin-bottom:0;}
-.value{color:#000;}
-.value div.documentation {font-style:italic}
+ul.values {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  margin-bottom: 0;
+}
+
+.value {
+  color: #000;
+}
+
+.value div.documentation {
+  font-style: italic
+}
+
 /* hide/show macro compact view */
-.grammar a.toggle { color:#000; cursor:pointer;}
-a.toggle:hover { text-decoration:none !important; background:#336699; color:#FFFFFF;}
-span.more span.refin { display:none;}
-span.less span.refin {display:block;}
-span.less span.more span.refin {display:none;}
-span.refin { margin-left:0.5ex; border-left:1px dotted #888; padding-left:2ex;}
-div.compact {padding-left:1ex;}
-div.compact ul { margin-top:0; margin-bottom:0; padding-top:0; padding-bottom:0;}
+.grammar a.toggle {
+  color: #000;
+  cursor: pointer;
+}
+
+a.toggle:hover {
+  text-decoration: none !important;
+  background: #336699;
+  color: #FFFFFF;
+}
+
+span.more span.refin {
+  display: none;
+}
+
+span.less span.refin {
+  display: block;
+}
+
+span.less span.more span.refin {
+  display: none;
+}
+
+span.refin {
+  margin-left: 0.5ex;
+  border-left: 1px dotted #888;
+  padding-left: 2ex;
+}
+
+div.compact {
+  padding-left: 1ex;
+}
+
+div.compact ul {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 /* image example */
-table.facs { font-family:serif; margin-top:2em; margin-bottom:2em; border:1px dotted #808080; padding-left:2em; padding-right:2em;}
-table.facs td { vertical-align:top;}
-table.facs caption { background:#DADADA;}
-table.facs p { margin-top:2ex; margin-bottom:2ex;}
+table.facs {
+  font-family: serif;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  border: 1px dotted #808080;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+table.facs td {
+  vertical-align: top;
+}
+
+table.facs caption {
+  background: #DADADA;
+}
+
+table.facs p {
+  margin-top: 2ex;
+  margin-bottom: 2ex;
+}
 
 /** xsl2html.xsl, documented transformation */
-.transform a {border:none;}
-.match p, .result p { text-indent:1em; line-height:110%; margin:0 0 0.5ex 0; }
-.xsl-var { margin-top:1ex;}
-.output { color:#961716; font-family: "Lucida Console", Courier, "MS Courier New", monospace; font-size:13px; line-height:110%; text-indent:0; text-align:left;}
-.template { margin: 1em 0 0 0; clear:both;}
-.template header { border:none; padding:0; border-bottom:#888 1px solid;}
+.transform a {
+  border: none;
+}
+
+.match p, .result p {
+  text-indent: 1em;
+  line-height: 110%;
+  margin: 0 0 0.5ex 0;
+}
+
+.xsl-var {
+  margin-top: 1ex;
+}
+
+.output {
+  color: #961716;
+  font-family: "Lucida Console", Courier, "MS Courier New", monospace;
+  font-size: 13px;
+  line-height: 110%;
+  text-indent: 0;
+  text-align: left;
+}
+
+.template {
+  margin: 1em 0 0 0;
+  clear: both;
+}
+
+.template header {
+  border: none;
+  padding: 0;
+  border-bottom: #888 1px solid;
+}
 
 /* PHP code */
-a.function, .php b.construct, .php var {font-family:Frutiger,"Deja Vu Sans",Helvetica,sans-serif; }
-pre.php { white-space: pre-wrap; font-size:14px; color:red; }
-code.function {color:#A82C37; }
-span.function { font-family:Frutiger,"Deja Vu Sans",Helvetica,sans-serif; color:#000;}
-a.function:hover {text-decoration:underline; }
-.php b.construct { color:#000; }
-code.string { color:#060; }
-code.integer { color:#FF0000; font-weight:bold; }
-code.php-tag { color:#FF0000; }
-code.numeric { color:#FF0000; font-weight:bold; }
-code.constant { color:#000000; }
-tt.op { background:none repeat scroll 0 0 #EEEEEE; color:#000000; }
-code.defined { color:red; }
-code.whitespace { white-space:pre; }
-code.curly { background:none repeat scroll 0 0 #FFAAAA;}
-code.parenthese { background:none repeat scroll 0 0 #AAFFAA; }
-code.square { background:none repeat scroll 0 0 #AAAAFF; }
-code.error-control { background:none repeat scroll 0 0 #FF0000; font-weight:bold; }
+a.function, .php b.construct, .php var {
+  font-family: Frutiger, "Deja Vu Sans", Helvetica, sans-serif;
+}
+
+pre.php {
+  white-space: pre-wrap;
+  font-size: 14px;
+  color: red;
+}
+
+code.function {
+  color: #A82C37;
+}
+
+span.function {
+  font-family: Frutiger, "Deja Vu Sans", Helvetica, sans-serif;
+  color: #000;
+}
+
+a.function:hover {
+  text-decoration: underline;
+}
+
+.php b.construct {
+  color: #000;
+}
+
+code.string {
+  color: #060;
+}
+
+code.integer {
+  color: #FF0000;
+  font-weight: bold;
+}
+
+code.php-tag {
+  color: #FF0000;
+}
+
+code.numeric {
+  color: #FF0000;
+  font-weight: bold;
+}
+
+code.constant {
+  color: #000000;
+}
+
+tt.op {
+  background: none repeat scroll 0 0 #EEEEEE;
+  color: #000000;
+}
+
+code.defined {
+  color: red;
+}
+
+code.whitespace {
+  white-space: pre;
+}
+
+code.curly {
+  background: none repeat scroll 0 0 #FFAAAA;
+}
+
+code.parenthese {
+  background: none repeat scroll 0 0 #AAFFAA;
+}
+
+code.square {
+  background: none repeat scroll 0 0 #AAAAFF;
+}
+
+code.error-control {
+  background: none repeat scroll 0 0 #FF0000;
+  font-weight: bold;
+}
 
 @media print {
-  #nav {display:none;}
-  #article {margin:0px !important; padding:0px; }
-  table.grammar  td, table.grammar  th { border:1px dotted #808080; }
+  #nav {
+    display: none;
+  }
+
+  #article {
+    margin: 0px !important;
+    padding: 0px;
+  }
+
+  table.grammar td, table.grammar th {
+    border: 1px dotted #808080;
+  }
 }
+
 /* keep file XML valid, maybe included by xsl:document() */
---><link/>
+--><meta/>

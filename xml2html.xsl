@@ -326,20 +326,17 @@ except the case of very long values where a preformatted block is more readable 
                     or contains(., '&lt;')
                     or contains(., '&gt;')
         ">
-          <span class="text">
+          <span class="xmltext"/>
             <xsl:call-template name="xml_replace">
               <xsl:with-param name="text" select="$text"/>
               <xsl:with-param name="pattern" select="$xmlents"/>
             </xsl:call-template>
-          </span>
         </xsl:when>
         <xsl:when test="normalize-space(.)=''">
           <xsl:value-of select="."/>
         </xsl:when>
         <xsl:otherwise>
-          <span class="text">
             <xsl:value-of select="."/>
-          </span>
         </xsl:otherwise>
       </xsl:choose>
   </xsl:template>
@@ -352,7 +349,7 @@ you have some text_html.xsl
     <xsl:choose>
       <!-- A bloc comment -->
       <xsl:when test="contains(., '&#10;' ) or contains(., '&#13;')">
-        <pre class="comment">
+        <pre class="xmlcomment">
           <a tabindex="1" class="fold">
             <xsl:text>&lt;--</xsl:text>
           </a>
@@ -361,7 +358,7 @@ you have some text_html.xsl
         </pre>
       </xsl:when>
       <xsl:otherwise>
-        <div class="comment">
+        <div class="xmlcomment">
           <xsl:text>&lt;!--</xsl:text>
             <code>
               <xsl:value-of select="."/>
@@ -490,7 +487,7 @@ text()[normalize-space(.)!='']
       </xsl:when>
       <!-- mixed block -->
       <xsl:when test="text()[normalize-space(.)!=''] and *">
-        <div class="xml_block {$class}">
+        <div class="xmlblock {$class}">
           <span class="open">
             <a class="fold" tabindex="1">
               <xsl:text>&lt;</xsl:text>
@@ -501,7 +498,7 @@ text()[normalize-space(.)!='']
             <xsl:apply-templates select="@*" mode="xml2html"/>
             <xsl:text>&gt;</xsl:text>
           </span>
-          <span class="xml_mix">
+          <span class="xmlmix">
             <xsl:call-template name="xml_content">
               <xsl:with-param name="inline" select="true()"/>
               <xsl:with-param name="mode" select="$mode"/>
@@ -527,7 +524,7 @@ text()[normalize-space(.)!='']
             <xsl:apply-templates select="@*" mode="xml2html"/>
             <xsl:text>&gt;</xsl:text>
           </dt>
-          <dd class="code">
+          <dd class="xmlcode">
             <xsl:call-template name="xml_content">
               <xsl:with-param name="mode" select="$mode"/>
             </xsl:call-template>
@@ -541,7 +538,7 @@ text()[normalize-space(.)!='']
       </xsl:when>
       <!-- block or with no children -->
       <xsl:otherwise>
-        <div class="{$class}">
+        <div class="xmlblock {$class}">
           <span class="open">
             <xsl:text>&lt;</xsl:text>
             <xsl:apply-templates select="." mode="xml_name"/>
